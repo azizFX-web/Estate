@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Estates — Cinematic Living</title>
+<meta name="description" content="The Hillside Residence — a private 5-bedroom hillside estate with uninterrupted views, floor-to-ceiling glass, and a pool & spa. Offered at $4,850,000.">
+<meta property="og:title" content="Meridian Estates — The Hillside Residence">
+<meta property="og:description" content="A private hillside estate with uninterrupted views and indoor-outdoor living, offered at $4,850,000.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d0c'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' fill='%23d9b877' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+  :root{
+    --ink:#0d0d0c;
+    --ink-2:#171613;
+    --stone:#cbb89d;
+    --bronze:#a67c3d;
+    --bronze-light:#d9b877;
+    --paper:#f2ede4;
+    --paper-dim:#b9b2a5;
+    --line:rgba(242,237,228,0.12);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--ink); color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+
+  h1,h2,h3,.display{ font-family:'Newsreader', serif; font-weight:500; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  a:focus-visible, button:focus-visible{
+    outline:1px solid var(--bronze-light); outline-offset:4px; border-radius:2px;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:26px clamp(20px,5vw,64px);
+    mix-blend-mode:difference;
+  }
+  .logo{ font-family:'Newsreader', serif; font-style:italic; font-size:1.3rem; letter-spacing:0.02em; }
+  .navlinks{ display:none; gap:40px; font-size:0.82rem; letter-spacing:0.03em; text-transform:uppercase; }
+  @media(min-width:800px){ .navlinks{ display:flex; } }
+  .navlinks a{ opacity:0.85; transition:opacity .2s; }
+  .navlinks a:hover{ opacity:1; }
+  .nav-cta{
+    border:1px solid var(--paper); padding:10px 22px; border-radius:2px;
+    font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase;
+  }
+
+  /* HERO — video placeholder zone */
+  .hero{
+    position:relative; height:100vh; height:100dvh; min-height:640px;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute; inset:-6%; z-index:0;
+    background:
+      linear-gradient(180deg, rgba(13,13,12,0.15) 0%, rgba(13,13,12,0.55) 65%, rgba(13,13,12,0.95) 100%),
+      radial-gradient(60% 50% at 68% 32%, rgba(217,184,119,0.16), transparent 70%),
+      linear-gradient(120deg, #23201b, #33291d 35%, #1b1a17 65%, #0d0d0c 100%);
+    animation: heroDrift 26s ease-in-out infinite;
+    transform-origin:60% 40%;
+    will-change:transform;
+  }
+  @keyframes heroDrift{
+    0%{ transform:scale(1) translate(0%, 0%); }
+    50%{ transform:scale(1.07) translate(-1.5%, -1%); }
+    100%{ transform:scale(1) translate(0%, 0%); }
+  }
+  .hero-sheen{
+    position:absolute; inset:-25%; z-index:1; pointer-events:none;
+    background:linear-gradient(115deg, transparent 42%, rgba(242,237,228,0.06) 50%, transparent 58%);
+    animation: sheenSweep 9s ease-in-out infinite;
+    will-change:transform;
+  }
+  @keyframes sheenSweep{
+    0%{ transform:translate(-12%, -8%); }
+    50%{ transform:translate(12%, 8%); }
+    100%{ transform:translate(-12%, -8%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-media{ animation:none; }
+    .hero-sheen{ display:none; }
+  }
+  .media-note{
+    position:absolute; top:96px; right:clamp(20px,5vw,64px); z-index:2;
+    font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--paper-dim); border:1px dashed rgba(242,237,228,0.3);
+    padding:8px 14px; border-radius:2px; max-width:220px; text-align:right;
+    line-height:1.5;
+  }
+  .hero-content{ position:relative; z-index:2; padding:0 clamp(20px,5vw,64px) 72px; max-width:920px; }
+  .eyebrow{
+    font-size:0.78rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--bronze-light); margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.4rem); line-height:1.02; color:var(--paper);
+  }
+  .hero h1 em{ font-style:italic; color:var(--bronze-light); }
+  .hero p{ margin-top:22px; max-width:460px; color:var(--paper-dim); font-size:1.02rem; line-height:1.6; }
+  .hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--bronze-light); color:#1b160c; font-weight:600;
+    padding:15px 30px; border-radius:2px; font-size:0.85rem;
+    letter-spacing:0.03em; text-transform:uppercase;
+    transition:background .25s;
+  }
+  .btn-primary:hover{ background:#efd39a; }
+  .btn-ghost{
+    padding:15px 28px; border:1px solid rgba(242,237,228,0.4); border-radius:2px;
+    font-size:0.85rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--paper-dim);
+    transition:all .25s;
+  }
+  .btn-ghost:hover{ border-color:var(--paper); color:var(--paper); }
+
+  /* SCROLLING ROOM STRIP — signature element */
+  .rooms{
+    padding:110px clamp(20px,5vw,64px) 60px;
+    border-top:1px solid var(--line);
+  }
+  .rooms-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:24px; flex-wrap:wrap; }
+  .rooms-head h2{ font-size:clamp(1.8rem,3.2vw,2.6rem); }
+  .rooms-head p{ color:var(--paper-dim); max-width:380px; font-size:0.92rem; line-height:1.6; }
+
+  .room-strip{
+    display:flex; gap:20px; overflow-x:auto; padding-bottom:20px;
+    scroll-snap-type:x mandatory;
+  }
+  .room-strip::-webkit-scrollbar{ height:4px; }
+  .room-strip::-webkit-scrollbar-thumb{ background:var(--line); }
+  .room-card{
+    flex:0 0 clamp(260px, 32vw, 380px);
+    scroll-snap-align:start;
+    aspect-ratio:4/5;
+    border-radius:3px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(90% 70% at 30% 20%, rgba(217,184,119,0.14), transparent 65%),
+      linear-gradient(160deg, #262119, #17130f);
+  }
+  .room-card::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(13,13,12,0.85), transparent 55%);
+  }
+  .room-label{
+    position:absolute; bottom:20px; left:20px; z-index:2;
+  }
+  .room-label .num{ font-size:0.7rem; color:var(--bronze-light); letter-spacing:0.1em; }
+  .room-label h3{ font-size:1.2rem; margin-top:4px; }
+
+  /* FEATURES STRIP */
+  .features{
+    padding:80px clamp(20px,5vw,64px);
+    border-top:1px solid var(--line);
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:40px;
+  }
+  .feature b{
+    display:block; font-family:'Newsreader', serif; font-size:1.9rem; color:var(--bronze-light);
+  }
+  .feature span{ color:var(--paper-dim); font-size:0.85rem; }
+
+  /* LISTING DETAIL */
+  .listing{
+    padding:100px clamp(20px,5vw,64px);
+    border-top:1px solid var(--line);
+    display:grid; gap:50px; grid-template-columns:1fr;
+  }
+  @media(min-width:900px){ .listing{ grid-template-columns:1.1fr 0.9fr; } }
+  .listing-visual{
+    aspect-ratio:4/3; border-radius:3px; overflow:hidden;
+    background:
+      radial-gradient(70% 60% at 65% 25%, rgba(217,184,119,0.14), transparent 65%),
+      linear-gradient(145deg, #2a2419, #14120e 60%, #201a12);
+    position:relative;
+  }
+  .listing-visual .media-note{ position:absolute; bottom:18px; left:18px; top:auto; right:auto; }
+  .listing h2{ font-size:clamp(1.9rem,3.4vw,2.7rem); }
+  .listing-price{ font-family:'Newsreader', serif; font-size:1.6rem; color:var(--bronze-light); margin-top:14px; }
+  .listing p{ color:var(--paper-dim); line-height:1.7; margin-top:20px; max-width:460px; }
+  .spec-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; max-width:420px; }
+  .spec{ border-top:1px solid var(--line); padding-top:12px; }
+  .spec b{ display:block; font-family:'Newsreader',serif; font-size:1.3rem; }
+  .spec span{ color:var(--paper-dim); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.04em; }
+
+  /* CONTACT */
+  .contact{
+    padding:100px clamp(20px,5vw,64px) 70px;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  .contact h2{ font-size:clamp(2rem,4.5vw,3.4rem); max-width:760px; margin:0 auto; }
+  .contact p{ color:var(--paper-dim); margin-top:20px; }
+  .contact-actions{ margin-top:38px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  .contact-form{
+    margin:44px auto 0; max-width:640px; text-align:left;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr; gap:18px; margin-bottom:18px; }
+  @media(min-width:640px){ .form-row{ grid-template-columns:1fr 1fr; } }
+  .form-field label{
+    display:block; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--paper-dim); margin-bottom:8px;
+  }
+  .form-field-full{ margin-bottom:18px; }
+  .contact-form input, .contact-form textarea{
+    width:100%; background:transparent; border:1px solid var(--line);
+    border-radius:2px; padding:12px 14px; color:var(--paper);
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    transition:border-color .2s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus{
+    outline:none; border-color:var(--bronze-light);
+  }
+  .contact-form textarea{ resize:vertical; }
+  .form-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  .contact-form button{ font:inherit; cursor:pointer; }
+  .contact-form button:disabled{ opacity:0.6; cursor:wait; }
+  .form-status{ margin-top:16px; font-size:0.85rem; color:var(--bronze-light); min-height:1.2em; text-align:center; }
+
+  footer{
+    padding:30px clamp(20px,5vw,64px); border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; font-size:0.78rem; color:var(--paper-dim); flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- FILM GRAIN ---------- */
+  .grain{
+    position:fixed; inset:0; z-index:80; pointer-events:none;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- LETTERBOX + SCRUBBER (signature) ---------- */
+  .letterbox-top, .letterbox-bottom{
+    position:absolute; left:0; right:0; height:5.5vh; background:#000; z-index:5;
+  }
+  .letterbox-top{ top:0; }
+  .letterbox-bottom{ bottom:0; }
+
+  .rec-indicator{
+    position:absolute; top:calc(5.5vh + 26px); left:clamp(20px,5vw,64px); z-index:6;
+    display:flex; align-items:center; gap:8px;
+    font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-dim);
+  }
+  .rec-dot{
+    width:7px; height:7px; border-radius:50%; background:#d64a3d;
+    animation: recBlink 1.6s ease-in-out infinite;
+  }
+  @keyframes recBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+
+  .scrubber{
+    position:absolute; left:clamp(20px,5vw,64px); right:clamp(20px,5vw,64px);
+    bottom:calc(5.5vh + 26px); z-index:6;
+    display:flex; align-items:center; gap:16px;
+  }
+  .scrub-time{
+    font-family:'Newsreader', serif; font-variant-numeric:tabular-nums;
+    font-size:0.82rem; color:var(--paper-dim); min-width:52px;
+  }
+  .scrub-track{
+    flex:1; height:1px; background:rgba(242,237,228,0.25); position:relative;
+  }
+  .scrub-fill{
+    position:absolute; left:0; top:-1px; height:3px; width:0%;
+    background:var(--bronze-light);
+  }
+  .scrub-fill::after{
+    content:''; position:absolute; right:-4px; top:-3px;
+    width:9px; height:9px; border-radius:50%; background:var(--bronze-light);
+  }
+  .scrub-label{
+    font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-dim);
+    white-space:nowrap;
+  }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  .cine-cursor{
+    position:fixed; top:0; left:0; z-index:90; pointer-events:none;
+    width:64px; height:64px; margin:-32px 0 0 -32px;
+    border:1px solid rgba(242,237,228,0.7); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--paper);
+    opacity:0; transform:scale(0.6);
+    transition:opacity .25s, transform .25s;
+    backdrop-filter:blur(2px);
+  }
+  .cine-cursor.active{ opacity:1; transform:scale(1); }
+  @media(hover:none), (pointer:coarse){ .cine-cursor{ display:none; } }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- ROOM STRIP UPGRADES ---------- */
+  .room-strip{ cursor:grab; user-select:none; }
+  .room-strip:active{ cursor:grabbing; }
+  .room-card{ transition:transform .4s ease, filter .4s ease; filter:brightness(0.8) saturate(0.85); }
+  .room-card.is-active{ filter:brightness(1) saturate(1); transform:scale(1.02); }
+  .room-card:hover{ filter:brightness(0.95) saturate(0.95); }
+  .listing-visual{ transition:transform .6s ease; }
+  .listing-visual:hover{ transform:scale(1.015); }
+  .room-card:nth-child(2){ background-position:80% 10%, 0 0; }
+  .room-card:nth-child(3){ background-position:20% 80%, 0 0; }
+  .room-card:nth-child(4){ background-position:70% 60%, 0 0; }
+  .room-card:nth-child(5){ background-position:40% 30%, 0 0; }
+  .room-label .tc{ font-family:'Newsreader',serif; font-variant-numeric:tabular-nums; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": "The Hillside Residence",
+  "description": "A private hillside estate with uninterrupted views, floor-to-ceiling glass, and indoor-outdoor living. 5 bedrooms, 6.5 bathrooms, 7,400 sqft on a 1.2 acre lot.",
+  "url": "https://www.meridianestates.example/",
+  "offers": {
+    "@type": "Offer",
+    "price": "4850000",
+    "priceCurrency": "USD"
+  },
+  "numberOfRooms": 5,
+  "floorSize": { "@type": "QuantitativeValue", "value": "7400", "unitCode": "FTK" }
+}
+</script>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cine-cursor" id="cineCursor">VIEW</div>
+
+<nav>
+  <div class="logo">Meridian Estates</div>
+  <div class="navlinks">
+    <a href="#rooms">Interiors</a>
+    <a href="#listing">The Property</a>
+    <a href="#contact">Enquire</a>
+  </div>
+  <a href="#contact" class="nav-cta">Book a viewing</a>
+</nav>
+
+<section class="hero" id="cineHero">
+  <div class="hero-media"></div>
+  <div class="hero-sheen"></div>
+  <div class="letterbox-top"></div>
+  <div class="letterbox-bottom"></div>
+  <div class="rec-indicator"><span class="rec-dot"></span> REC — Cinematic Tour</div>
+  <div class="media-note">Video placeholder — replace with a cinematic fly-through clip when footage is ready</div>
+  <div class="scrubber">
+    <span class="scrub-time" id="scrubTime">00:00</span>
+    <div class="scrub-track"><div class="scrub-fill" id="scrubFill"></div></div>
+    <span class="scrub-label">Hillside Residence — Full Walkthrough</span>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Private Listing · Hillside Residence</div>
+    <h1>A house that<br><em>moves like film.</em></h1>
+    <p>Step inside before you arrive. A cinematic walkthrough of the property, captured the way you'll actually experience it.</p>
+    <div class="hero-actions">
+      <a href="#listing" class="btn-primary">View the property</a>
+      <a href="#contact" class="btn-ghost">Book a viewing</a>
+    </div>
+  </div>
+</section>
+
+<section class="rooms reveal" id="rooms">
+  <div class="rooms-head">
+    <h2>Move through the house</h2>
+    <p>Each space captured in motion — drag to walk the halls, chapter by chapter.</p>
+  </div>
+  <div class="room-strip" id="roomStrip">
+    <div class="room-card is-active"><div class="room-label"><div class="num tc">00:00–00:18</div><h3>Foyer & Stair</h3></div></div>
+    <div class="room-card"><div class="room-label"><div class="num tc">00:19–00:47</div><h3>Great Room</h3></div></div>
+    <div class="room-card"><div class="room-label"><div class="num tc">00:48–01:12</div><h3>Chef's Kitchen</h3></div></div>
+    <div class="room-card"><div class="room-label"><div class="num tc">01:13–01:41</div><h3>Primary Suite</h3></div></div>
+    <div class="room-card"><div class="room-label"><div class="num tc">01:42–02:05</div><h3>Pool & Terrace</h3></div></div>
+  </div>
+</section>
+
+<section class="features reveal">
+  <div class="feature"><b>5</b><span>Bedrooms</span></div>
+  <div class="feature"><b>6.5</b><span>Bathrooms</span></div>
+  <div class="feature"><b>7,400 sqft</b><span>Living area</span></div>
+  <div class="feature"><b>1.2 acres</b><span>Lot size</span></div>
+</section>
+
+<section class="listing reveal" id="listing">
+  <div class="listing-visual">
+    <div class="media-note" style="position:absolute; bottom:18px; left:18px; top:auto; right:auto;">Video placeholder — property exterior fly-through</div>
+  </div>
+  <div>
+    <h2>The Hillside Residence</h2>
+    <div class="listing-price">$4,850,000</div>
+    <p>A private hillside estate with uninterrupted views, floor-to-ceiling glass, and a design built for indoor-outdoor living year-round. Fully renovated with imported stone and custom millwork throughout.</p>
+    <div class="spec-grid">
+      <div class="spec"><b>2019</b><span>Renovated</span></div>
+      <div class="spec"><b>3</b><span>Car garage</span></div>
+      <div class="spec"><b>Yes</b><span>Pool & spa</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <h2>Schedule a private viewing.</h2>
+  <p>Available by appointment — response within one business day.</p>
+
+  <form class="contact-form" id="viewingForm" action="https://formspree.io/f/meeylpvr" method="POST">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="f-name">Full name</label>
+        <input type="text" id="f-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="f-phone">Phone</label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="f-date">Preferred date</label>
+        <input type="date" id="f-date" name="preferred_date">
+      </div>
+    </div>
+    <div class="form-field form-field-full">
+      <label for="f-message">Message</label>
+      <textarea id="f-message" name="message" rows="3" placeholder="Anything you'd like the agent to know before the viewing"></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="Viewing request — Hillside Residence">
+    <div class="form-actions">
+      <button type="submit" class="btn-primary">Request a viewing</button>
+      <a href="tel:+10000000000" class="btn-ghost">Call the agent</a>
+    </div>
+    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<footer>
+  <div>Meridian Estates — placeholder listing site</div>
+  <div>Demo build · content & video to be replaced</div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Viewing request form — progressive enhancement, works with any form backend */
+  const viewingForm = document.getElementById('viewingForm');
+  const formStatus = document.getElementById('formStatus');
+  if(viewingForm){
+    viewingForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const btn = viewingForm.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      formStatus.textContent = 'Sending…';
+      try{
+        const res = await fetch(viewingForm.action, {
+          method:'POST',
+          body:new FormData(viewingForm),
+          headers:{ 'Accept':'application/json' }
+        });
+        if(res.ok){
+          formStatus.textContent = "Thank you — we'll be in touch within one business day.";
+          viewingForm.reset();
+        } else {
+          formStatus.textContent = "Something went wrong. Please email or call the agent directly.";
+        }
+      } catch(err){
+        formStatus.textContent = "Something went wrong. Please email or call the agent directly.";
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+
+  /* Hero scroll parallax */
+  const hero = document.getElementById('cineHero');
+  const heroContent = document.querySelector('.hero-content');
+  const heroMedia = document.querySelector('.hero-media');
+  if(!reduce && hero){
+    let ticking = false;
+    window.addEventListener('scroll', ()=>{
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(()=>{
+        const y = window.scrollY;
+        const heroH = hero.offsetHeight;
+        if(y < heroH){
+          heroContent.style.transform = `translateY(${y*0.25}px)`;
+          heroContent.style.opacity = String(1 - (y/heroH)*1.3);
+          heroMedia.style.filter = `brightness(${1 - (y/heroH)*0.25})`;
+        }
+        ticking = false;
+      });
+    }, { passive:true });
+  }
+
+  /* Scrubber ticking */
+  const scrubFill = document.getElementById('scrubFill');
+  const scrubTime = document.getElementById('scrubTime');
+  const totalSeconds = 125; // 02:05
+  let t = 0;
+  function fmt(s){ const m = Math.floor(s/60); const r = Math.floor(s%60); return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
+  function tickScrub(){
+    t = (t + 0.25) % totalSeconds;
+    scrubFill.style.width = (t/totalSeconds*100) + '%';
+    scrubTime.textContent = fmt(t);
+    if(!reduce) requestAnimationFrame(tickScrub);
+  }
+  if(!reduce){ requestAnimationFrame(tickScrub); }
+  else { scrubFill.style.width = '30%'; scrubTime.textContent = '00:34'; }
+
+  /* Custom cinematic cursor — smoothed with easing */
+  const cursor = document.getElementById('cineCursor');
+  const cursorZones = document.querySelectorAll('#cineHero, .room-card, .listing-visual');
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    if(reduce){
+      window.addEventListener('mousemove', e=>{
+        const scale = cursor.classList.contains('active') ? 1 : 0.6;
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(${scale})`;
+      });
+    } else {
+      let mx = window.innerWidth/2, my = window.innerHeight/2, cx = mx, cy = my;
+      window.addEventListener('mousemove', e=>{ mx = e.clientX; my = e.clientY; });
+      function animateCursor(){
+        cx += (mx - cx) * 0.18;
+        cy += (my - cy) * 0.18;
+        const scale = cursor.classList.contains('active') ? 1 : 0.6;
+        cursor.style.transform = `translate(${cx}px, ${cy}px) scale(${scale})`;
+        requestAnimationFrame(animateCursor);
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    cursorZones.forEach(zone=>{
+      zone.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
+      zone.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
+    });
+  }
+
+  /* Scroll reveal */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); } });
+  }, { threshold:0.15 });
+  revealEls.forEach(el=> io.observe(el));
+
+  /* Room strip: drag-to-scroll + active card highlight */
+  const strip = document.getElementById('roomStrip');
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e=>{
+    isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft;
+  });
+  window.addEventListener('mouseup', ()=> isDown = false);
+  strip.addEventListener('mouseleave', ()=> isDown = false);
+  strip.addEventListener('mousemove', e=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    strip.scrollLeft = scrollLeft - (x - startX) * 1.4;
+  });
+
+  const cards = document.querySelectorAll('.room-card');
+  function updateActiveCard(){
+    const stripRect = strip.getBoundingClientRect();
+    const center = stripRect.left + stripRect.width/2;
+    let closest = null, closestDist = Infinity;
+    cards.forEach(c=>{
+      const r = c.getBoundingClientRect();
+      const dist = Math.abs((r.left + r.width/2) - center);
+      if(dist < closestDist){ closestDist = dist; closest = c; }
+    });
+    cards.forEach(c=> c.classList.remove('is-active'));
+    if(closest) closest.classList.add('is-active');
+  }
+  strip.addEventListener('scroll', ()=> requestAnimationFrame(updateActiveCard));
+</script>
+
+</body>
+</html>
